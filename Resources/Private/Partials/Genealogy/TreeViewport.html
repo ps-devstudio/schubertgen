@@ -1,0 +1,24 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<div class="schubertgen-tree__shell" data-schubertgen-tree data-schubertgen-d3-tree>
+    <f:if condition="{chart.title}">
+        <h2 class="schubertgen-tree__title">{chart.title}</h2>
+    </f:if>
+    <div class="schubertgen-tree__toolbar" aria-label="Baumsteuerung">
+        <button class="schubertgen-tree__tool" type="button" data-schubertgen-tree-zoom-out title="Verkleinern">−</button>
+        <label class="schubertgen-tree__zoom">
+            <span>Zoom</span>
+            <input type="range" min="35" max="320" value="100" step="5" data-schubertgen-tree-zoom />
+        </label>
+        <button class="schubertgen-tree__tool" type="button" data-schubertgen-tree-zoom-in title="Vergrößern">+</button>
+        <button class="schubertgen-tree__tool schubertgen-tree__tool--text" type="button" data-schubertgen-tree-fit>Fit</button>
+        <button class="schubertgen-tree__tool schubertgen-tree__tool--text" type="button" data-schubertgen-tree-reset>Reset</button>
+    </div>
+    <script type="application/json" data-schubertgen-chart-json><f:if condition="{chart.json}"><f:then>{chart.json -> f:format.raw()}</f:then><f:else>{treeChartJson -> f:format.raw()}</f:else></f:if></script>
+    <div class="schubertgen-tree__d3" data-schubertgen-d3-stage aria-label="Interaktiver Stammbaum"></div>
+    <div class="schubertgen-tree__viewport" data-schubertgen-tree-viewport>
+        <div class="schubertgen-tree__stage" data-schubertgen-tree-stage>
+            <f:render partial="Genealogy/TreeNode" arguments="{node: tree}" />
+        </div>
+    </div>
+</div>
+</html>

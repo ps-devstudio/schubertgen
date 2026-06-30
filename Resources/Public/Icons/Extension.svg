@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Schubert Genealogy">
+  <rect width="64" height="64" rx="8" fill="#edf3f7"/>
+  <circle cx="32" cy="14" r="7" fill="#5b7897"/>
+  <circle cx="18" cy="42" r="7" fill="#7c9f74"/>
+  <circle cx="46" cy="42" r="7" fill="#a5727e"/>
+  <path d="M32 21v8M32 29H18v6M32 29h14v6" fill="none" stroke="#334" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

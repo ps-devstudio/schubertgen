@@ -1,0 +1,94 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default" />
+<f:section name="Main">
+    <article class="schubertgen schubertgen-person">
+        <nav class="schubertgen__nav">
+            <f:link.action action="tree" arguments="{person: person.external_id}">Stammbaum</f:link.action>
+            <f:link.action action="map">Karte</f:link.action>
+            <f:link.action action="list">Personenliste</f:link.action>
+        </nav>
+
+        <header class="schubertgen__header">
+            <h1>{person.full_name}</h1>
+            <p>
+                <f:if condition="{person.birth_date_text}">* {person.birth_date_text}</f:if>
+                <f:if condition="{person.birth_place}"> {person.birth_place}</f:if>
+                <f:if condition="{person.death_date_text}"> · † {person.death_date_text}</f:if>
+                <f:if condition="{person.death_place}"> {person.death_place}</f:if>
+            </p>
+        </header>
+
+        <f:if condition="{person.primaryImage}">
+            <figure class="schubertgen-person__portrait">
+                <img src="{person.primaryImage.publicUrl}" alt="{person.primaryImage.alternative ?: person.full_name}" loading="lazy" />
+                <f:if condition="{person.primaryImage.title}">
+                    <figcaption>{person.primaryImage.title}</figcaption>
+                </f:if>
+            </figure>
+        </f:if>
+
+        <f:if condition="{media}">
+            <p class="schubertgen-person__media">{media.title}</p>
+        </f:if>
+
+        <f:if condition="{parentFamilies}">
+            <section class="schubertgen__section">
+                <h2>Eltern</h2>
+                <f:for each="{parentFamilies}" as="family">
+                    <p>
+                        <f:if condition="{family.husband}">
+                            <f:link.action action="show" arguments="{person: family.husband.external_id}">{family.husband.full_name}</f:link.action>
+                        </f:if>
+                        <f:if condition="{family.wife}">
+                            <f:if condition="{family.husband}"> und </f:if>
+                            <f:link.action action="show" arguments="{person: family.wife.external_id}">{family.wife.full_name}</f:link.action>
+                        </f:if>
+                    </p>
+                </f:for>
+            </section>
+        </f:if>
+
+        <f:if condition="{families}">
+            <section class="schubertgen__section">
+                <h2>Familie</h2>
+                <f:for each="{families}" as="family">
+                    <div class="schubertgen-family">
+                        <p>
+                            <strong>Partner:</strong>
+                            <f:if condition="{family.partner}">
+                                <f:link.action action="show" arguments="{person: family.partner.external_id}">{family.partner.full_name}</f:link.action>
+                            </f:if>
+                            <f:if condition="{family.marriage_date_text}">, Heirat {family.marriage_date_text}</f:if>
+                            <f:if condition="{family.marriage_place}"> in {family.marriage_place}</f:if>
+                        </p>
+                        <f:if condition="{family.children}">
+                            <ul>
+                                <f:for each="{family.children}" as="child">
+                                    <li><f:link.action action="show" arguments="{person: child.external_id}">{child.full_name}</f:link.action></li>
+                                </f:for>
+                            </ul>
+                        </f:if>
+                    </div>
+                </f:for>
+            </section>
+        </f:if>
+
+        <f:if condition="{events}">
+            <section class="schubertgen__section">
+                <h2>Ereignisse</h2>
+                <table class="schubertgen__table">
+                    <tbody>
+                        <f:for each="{events}" as="event">
+                            <tr>
+                                <th>{event.event_type}</th>
+                                <td>{event.date_text}</td>
+                                <td>{event.place}</td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </section>
+        </f:if>
+    </article>
+</f:section>
+</html>

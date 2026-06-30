@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" date="2026-05-25T00:00:00Z">
+    <body>
+      <trans-unit id="tx_schubertgen_domain_model_person">
+        <source>Person</source>
+      </trans-unit>
+      <trans-unit id="tx_schubertgen_domain_model_family">
+        <source>Family</source>
+      </trans-unit>
+      <trans-unit id="tx_schubertgen_domain_model_event">
+        <source>Event</source>
+      </trans-unit>
+      <trans-unit id="tx_schubertgen_domain_model_source">
+        <source>Source</source>
+      </trans-unit>
+      <trans-unit id="tx_schubertgen_domain_model_media">
+        <source>Media</source>
+      </trans-unit>
+      <trans-unit id="tx_schubertgen_domain_model_place">
+        <source>Place</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

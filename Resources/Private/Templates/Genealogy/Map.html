@@ -1,0 +1,34 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default" />
+<f:section name="Main">
+    <div class="schubertgen schubertgen-map">
+        <nav class="schubertgen__nav">
+            <f:link.action action="tree">Baumansicht</f:link.action>
+            <f:link.action action="list">Personenliste</f:link.action>
+            <f:if condition="{rootPerson}">
+                <f:link.action action="show" arguments="{person: rootPerson.external_id}">Startperson</f:link.action>
+            </f:if>
+        </nav>
+
+        <header class="schubertgen__header">
+            <h1>Orte und Ereignisse</h1>
+            <p>{mapEventCount} Ereignisse mit Koordinaten</p>
+        </header>
+
+        <script type="application/json" data-schubertgen-map-events>{mapEventsJson -> f:format.raw()}</script>
+        <div class="schubertgen-map__layout">
+            <div class="schubertgen-map__canvas" data-schubertgen-map aria-label="Karte der genealogischen Ereignisse"></div>
+            <aside class="schubertgen-map__sidebar">
+                <div class="schubertgen-map__sidebar-header">
+                    <h2>Ereignisse</h2>
+                    <label class="schubertgen-map__search">
+                        <span>Suche</span>
+                        <input type="search" data-schubertgen-map-search placeholder="Name, Ort oder Ereignis">
+                    </label>
+                </div>
+                <div class="schubertgen-map__list" data-schubertgen-map-list></div>
+            </aside>
+        </div>
+    </div>
+</f:section>
+</html>

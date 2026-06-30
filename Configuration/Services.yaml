@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SchubertliederPlugin\Schubertgen\:
+    resource: '../Classes/*'
+
+  SchubertliederPlugin\Schubertgen\Command\ImportGedcomCommand:
+    public: true
+    tags:
+      - name: console.command
+        command: schubertgen:import-gedcom
+        description: 'Import Franz Schubert genealogy data from GEDCOM.'

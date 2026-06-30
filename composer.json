@@ -1,0 +1,21 @@
+{
+  "name": "schubertliederplugin/schubertgen",
+  "description": "Genealogy extension for Franz Schubert family tree data",
+  "type": "typo3-cms-extension",
+  "license": "GPL-3.0",
+  "require": {
+    "typo3/cms-core": "^12.4 || ^13.4",
+    "typo3/cms-extbase": "^12.4 || ^13.4",
+    "typo3/cms-fluid": "^12.4 || ^13.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "SchubertliederPlugin\\Schubertgen\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "schubertgen"
+    }
+  }
+}

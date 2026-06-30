@@ -1,0 +1,26 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<div class="schubertgen-tree__node">
+    <div class="schubertgen-tree__person schubertgen-tree__person--{node.person.gender}">
+        <f:link.action action="show" arguments="{person: node.person.external_id}">
+            <f:if condition="{node.person.primaryImage}">
+                <img class="schubertgen-tree__portrait" src="{node.person.primaryImage.publicUrl}" alt="{node.person.primaryImage.alternative ?: node.person.full_name}" loading="lazy" />
+            </f:if>
+            <strong>{node.person.full_name}</strong>
+            <span>
+                <f:if condition="{node.person.birth_date_text}">* {node.person.birth_date_text}</f:if>
+                <f:if condition="{node.person.death_date_text}"> † {node.person.death_date_text}</f:if>
+            </span>
+            <small>
+                <f:if condition="{node.person.birth_place}">{node.person.birth_place}</f:if>
+            </small>
+        </f:link.action>
+    </div>
+    <f:if condition="{node.parents}">
+        <div class="schubertgen-tree__parents">
+            <f:for each="{node.parents}" as="parentNode">
+                <f:render partial="Genealogy/TreeNode" arguments="{node: parentNode}" />
+            </f:for>
+        </div>
+    </f:if>
+</div>
+</html>

@@ -1,0 +1,34 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default" />
+<f:section name="Main">
+    <div class="schubertgen schubertgen-tree">
+        <nav class="schubertgen__nav">
+            <f:link.action action="list">Personenliste</f:link.action>
+            <f:link.action action="map">Karte</f:link.action>
+            <f:if condition="{rootPerson}">
+                <f:link.action action="show" arguments="{person: rootPerson.external_id}">Personendetail</f:link.action>
+            </f:if>
+        </nav>
+
+        <header class="schubertgen__header">
+            <h1>Stammbaum Franz Schubert</h1>
+            <f:if condition="{rootPerson}">
+                <p>Ausgehend von {rootPerson.full_name}</p>
+            </f:if>
+        </header>
+
+        <f:if condition="{treeCharts}">
+            <f:then>
+                <div class="schubertgen-tree__charts">
+                    <f:for each="{treeCharts}" as="chart">
+                        <f:render partial="Genealogy/TreeViewport" arguments="{tree: tree, chart: chart}" />
+                    </f:for>
+                </div>
+            </f:then>
+            <f:else>
+                <p class="schubertgen__empty">Keine Baumdaten gefunden. Bitte Import und Startperson prüfen.</p>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

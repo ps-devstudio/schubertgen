@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+use SchubertliederPlugin\Schubertgen\Controller\GenealogyController;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
+defined('TYPO3') or die();
+
+ExtensionUtility::configurePlugin(
+    'Schubertgen',
+    'Genealogy',
+    [
+        GenealogyController::class => 'index,list,show,tree,map',
+    ],
+    []
+);

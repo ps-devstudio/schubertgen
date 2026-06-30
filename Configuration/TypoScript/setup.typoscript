@@ -1,0 +1,13 @@
+plugin.tx_schubertgen_genealogy {
+  view {
+    templateRootPaths.10 = EXT:schubertgen/Resources/Private/Templates/
+    partialRootPaths.10 = EXT:schubertgen/Resources/Private/Partials/
+    layoutRootPaths.10 = EXT:schubertgen/Resources/Private/Layouts/
+  }
+  settings {
+    defaultPersonExternalId = {$plugin.tx_schubertgen.settings.defaultPersonExternalId}
+  }
+}
+
+page.includeCSS.schubertgen = EXT:schubertgen/Resources/Public/Css/genealogy.css
+page.includeJSFooter.schubertgen = EXT:schubertgen/Resources/Public/JavaScript/genealogy.js

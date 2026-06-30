@@ -1,0 +1,61 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default" />
+<f:section name="Main">
+    <div class="schubertgen">
+        <nav class="schubertgen__nav">
+            <f:link.action action="tree">Baumansicht</f:link.action>
+            <f:link.action action="map">Karte</f:link.action>
+            <f:if condition="{rootPerson}">
+                <f:link.action action="show" arguments="{person: rootPerson.external_id}">Startperson</f:link.action>
+            </f:if>
+        </nav>
+
+        <header class="schubertgen__header">
+            <h1>Stammbaum Franz Schubert</h1>
+            <f:if condition="{rootPerson}">
+                <p>Startperson: {rootPerson.full_name}</p>
+            </f:if>
+        </header>
+
+        <section class="schubertgen__section schubertgen-tree">
+            <h2>Ahnenbaum</h2>
+            <f:if condition="{treeCharts}">
+                <f:then>
+                    <div class="schubertgen-tree__charts">
+                        <f:for each="{treeCharts}" as="chart">
+                            <f:render partial="Genealogy/TreeViewport" arguments="{tree: tree, chart: chart}" />
+                        </f:for>
+                    </div>
+                </f:then>
+                <f:else>
+                    <p class="schubertgen__empty">Keine Baumdaten gefunden. Bitte Import und Startperson prüfen.</p>
+                </f:else>
+            </f:if>
+        </section>
+
+        <section class="schubertgen__section">
+            <h2>Personen</h2>
+        <table class="schubertgen__table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Geburt</th>
+                    <th>Tod</th>
+                </tr>
+            </thead>
+            <tbody>
+                <f:for each="{persons}" as="person">
+                    <tr>
+                        <td>
+                            <f:link.action action="show" arguments="{person: person.external_id}">{person.full_name}</f:link.action>
+                        </td>
+                        <td>{person.birth_date_text}<f:if condition="{person.birth_place}">, {person.birth_place}</f:if></td>
+                        <td>{person.death_date_text}<f:if condition="{person.death_place}">, {person.death_place}</f:if></td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
+        </section>
+    </div>
+</f:section>
+</html>
