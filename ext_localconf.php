@@ -13,5 +13,6 @@ ExtensionUtility::configurePlugin(
     [
         GenealogyController::class => 'index,list,show,tree,map',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
