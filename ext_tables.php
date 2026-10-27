@@ -9,5 +9,8 @@ defined('TYPO3') or die();
 ExtensionUtility::registerPlugin(
     'Schubertgen',
     'Genealogy',
-    'Schubert Genealogy'
+    'Schubert-Genealogie',
+    'schubertgen-plugin-genealogy',
+    'myplugins',
+    'Familienbaum der Familie Schubert'
 );
