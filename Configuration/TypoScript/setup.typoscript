@@ -11,3 +11,11 @@ plugin.tx_schubertgen_genealogy {
 
 page.includeCSS.schubertgen = EXT:schubertgen/Resources/Public/Css/genealogy.css
 page.includeJSFooter.schubertgen = EXT:schubertgen/Resources/Public/JavaScript/genealogy.js
+
+# Compatibility for existing content elements using the former CType.
+tt_content.list.20.schubertgen_genealogy = EXTBASEPLUGIN
+tt_content.list.20.schubertgen_genealogy {
+  extensionName = Schubertgen
+  pluginName = Genealogy
+}
+tt_content.schubertgen_genealogy < tt_content.list.20.schubertgen_genealogy
